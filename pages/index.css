@@ -16,10 +16,14 @@
 @import url(../blocks/elements/__cell/elements__cell.css);
 @import url(../blocks/elements/__image/elements__image.css);
 @import url(../blocks/elements/__cell-like/elements__cell-like.css);
+@import url(../blocks/elements/__cell-like/elements__cell-like_active.css);
 @import url(../blocks/elements/__cell-title/elements__cell-title.css);
 @import url(../blocks/elements/__delete-button/elements__delete-button.css);
-@import url(../blocks/elements/__cell-like/_active/elements__cell-like_active.css);
 @import url(../blocks/popup/popup.css);
+@import url(../blocks/popup/__big-pic/popup__big-pic.css);
+@import url(../blocks/popup/__figcaption/popup__figcaption.css);
+@import url(../blocks/popup/__figure/popup__figure.css);
+@import url(../blocks/popup/__img/popup__img.css);
 @import url(../blocks/popup/__container/popup__container.css);
 @import url(../blocks/popup/__title/popup__title.css);
 @import url(../blocks/popup/__input/popup__input.css);
