@@ -49,7 +49,7 @@
             minlength="2"
             maxlength="40"
           />
-          <span id="user-name-error" class="popup__error"></span>
+          <span id="user-name-error" class="popup__error span"></span>
           <input
             id="status-name"
             class="popup__input popup__input_text-status popup__input_invalid"
@@ -60,7 +60,7 @@
             minlength="2"
             maxlength="200"
           />
-          <span id="status-name-error" class="popup__error"></span>
+          <span id="status-name-error" class="popup__error span"></span>
           <button class="popup__submit" type="submit">Сохранить</button>
         </form>
       </div>
@@ -70,7 +70,7 @@
         <button class="popup__close popup__close_pic" type="button"></button>
         <form class="popup__form popup__form-pic" name="card" novalidate>
           <h2 class="popup__title popup__title_picture">Новое место</h2>
-          <input
+            <input
             id="picture-name"
             class="popup__input popup__input_picture-name popup__input_invalid"
             type="text"
@@ -80,9 +80,9 @@
             name="input-picture-name"
             minlength="2"
             maxlength="30"
-          />
-          <span id="picture-name-error" class="popup__error"></span>
-          <input
+            />
+            <span id="picture-name-error" class="popup__error span"></span>
+            <input
             id="url"
             class="popup__input popup__input_picture-link popup__input_invalid"
             type="url"
@@ -90,13 +90,13 @@
             required
             placeholder="Ссылка на картинку"
             value=""
-          />
-          <span id="url-error" class="popup__error"></span>
-          <button
+            />
+            <span id="url-error" class="popup__error span"></span>
+            <button
             class="popup__submit popup__submit-pic"
             id="submit"
             type="submit"
-          >
+            >
             Сохранить
           </button>
         </form>
