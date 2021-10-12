@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mesto</title>
+  <!-- <link rel="stylesheet" href="./pages/index.css"> -->
+</head>
+<body>
+
+  <div class="page">
+
+    <header class="header">
+      <img class="header__logo" src="<%=require('./images/logo.svg')%>" alt="логотип">
+    </header>
+
+    <main class="main">
+
+      <section class="profile">
+        <img class="profile__avatar" src="<%=require('./images/image.jpg')%>" alt="аватар">
+        <div class="profile__profile-info">
+          <h1 class="profile__title">Жак-Ив Кусто</h1>
+          <button class="profile__edit-button" type="button" aria-label="Редактировать"></button>
+          <p class="profile__subtitle">Исследователь океана</p>
+        </div>
+        <button class="profile__add-button" type="button" aria-label="Добавить"></button>
+      </section>
+<!-- Добавление карточек через js -->
+      <section class="template-container">
+        
+      </section>
+
+      <footer class="footer">
+        <p class="footer__copyright">&copy; 2021 Mesto Russia</p>
+      </footer>
+    </main>
+<!-- Попап редактирования профиля -->
+      <div class="popup popup_profile_editing">
+        <div class="popup__container">
+          <h2 class="popup__title">Редактировать профиль</h2>
+          <button class="popup__close-icon popup__close-icon_profile_edit" type="button" aria-label="Закрыть"></button>
+          <form class="popup__form form form_profile_edit" name="edit-profile" novalidate>      
+            <input type="text" id="name" name="userName" class="form__field form__field_item_name" placeholder="Имя" maxlength="40" minlength="2" required>
+            <span class="form__field-error" id="name-error">Ошибка</span>    
+            <input type="text"  id="info" name="userJob" class="form__field form__field_item_job"  placeholder="О себе" maxlength="200" minlength="2" required>
+            <span class="form__field-error" id="info-error">Ошибка</span>
+            <button class="form__button form__button_submit_active"  type="submit" aria-label="Сохранить">Сохранить</button>
+          </form> 
+        </div>
+      </div>
+<!-- Попап редактирования аватара -->
+      <div class="popup popup_container_avatar">
+        <div class="popup__container">
+          <h2 class="popup__title">Обновить аватар</h2>
+          <button class="popup__close-icon popup__close-icon_avatar" type="button" aria-label="Закрыть"></button>
+          <form class="popup__form form popup__form_avatar" name="avatar" novalidate>
+            <input type="url" name="avatar" id="avatar" class="form__field form__field_avatar" placeholder="Ссылка на аватар"  required>
+            <span class="form__field-error" id="avatar-error">Ошибка</span>
+            <button class="form__button  form__button_submit_active"  type="submit" aria-label="Сохранить">Сохранить</button>
+          </form> 
+        </div>
+      </div>
+<!-- Попап добавления  фотографий -->
+      <div class="popup popup_container_cards">
+        <div class="popup__container">
+          <h2 class="popup__title">Новое место</h2>
+          <button class="popup__close-icon popup__close-icon_close_cards" type="button" aria-label="Закрыть"></button>
+          <form class="popup__form form popup__form_add_cards" name="add-place" novalidate>
+            <input type="text" name="title" id="title" class="form__field form__field_item_title" placeholder="Название" maxlength="30" minlength="2" required>
+            <span class="form__field-error" id="title-error">Ошибка</span>
+            <input type="url" name="link" id="link" class="form__field form__field_item_link" placeholder="Ссылка на картинку"  required>
+            <span class="form__field-error" id="link-error">Ошибка</span>
+            <button class="form__button form__button_add_cards form__button_submit_active"  type="submit" aria-label="Сохранить">Создать</button>
+          </form> 
+        </div>
+      </div>
+<!-- Попап просмотра фотографий -->  
+      <div class="popup popup_content_image">
+        <div class="popup__image-container">
+          <button class="popup__close-icon popup__close-icon_close_image" type="button" aria-label="Закрыть"></button>
+          <figure class="popup__figure">
+            <img src="#" class="popup__image" alt="фотография">
+            <figcaption class="popup__image-caption">Фотография</figcaption>
+          </figure>
+        </div>
+      </div>
+<!-- Попап удаления карточки -->
+      <div class="popup popup_container_delete-cards">
+        <div class="popup__container">
+          <h2 class="popup__title">Вы уверены?</h2>
+          <button class="popup__close-icon" type="button" aria-label="Закрыть"></button>
+          <form class="popup__form form popup__form_delete-cards" name="delete-cards" novalidate>
+            <button class="form__button  form__button_submit_active"  type="submit" aria-label="Да">Да</button>
+          </form> 
+        </div>
+      </div>
+
+<!-- Шаблон карточки -->
+      <template class="elements">
+        <div class="elements__element">
+          <img class="elements__image" src="#" alt="_">
+          <div class="elements__container">
+            <h2 class="elements__text"></h2>
+            <div class="elements__container-like">
+              <button class="elements__group" type="button" aria-label="лайк"></button>
+              <span class="elements__number-likes">0</span>
+            </div>
+          </div>
+          <button class="elements__btn elements__btn_active" aria-label="Удалить" type="button"></button>
+        </div>  
+      </template>
+  </div>
+  
+  <!-- <script type="module" src="./pages/index.js"></script>  -->
+  
+</body> 
+</html>
