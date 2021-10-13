@@ -1,0 +1,16 @@
+.element {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  border-radius: 10px;
+  background-repeat: no-repeat;
+  max-width: 282px;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 900px) {
+  .element {
+    justify-self: center;
+  }
+}

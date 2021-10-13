@@ -1,42 +1,33 @@
-// Попап формы
-import Popup from './Popup.js';
-export default class PopupWithForm extends Popup {
-  constructor(popupSelector, { submitForm }) {
-    super(popupSelector);
-    this._popupForm = this._popup.querySelector('.form');
-    this._inputList = this._popupForm.querySelectorAll('.form__field');
-    this._submitForm = submitForm;
-    this._btnSubmit =  this._popupForm.querySelector('.form__button');
-  };
+import { Popup } from "./Popup.js";
 
-  // собираем данные полей  ввода
-  _getInputValues() {
-    this._inputValues = {};
-    this._inputList.forEach(input => {
-      this._inputValues[input.name] = input.value;
-    });
-    return this._inputValues;
-  }
+export class PopupWithForm extends Popup{
+	constructor(popup, handleFormsubmit){
+		super(popup);
+		this._handleFormsubmit = handleFormsubmit;
+		this._popupForm = this._popup.querySelector('.popup__edit-form');
+	}
 
-  setEventListeners() {
-    super.setEventListeners();
-    this._popupForm.addEventListener('submit', (evt) => {
-      evt.preventDefault();
-      this._submitForm(this._getInputValues());
-    })
-    super.setEventListeners();
-  }
-  closePopup() {
-    super.closePopup();
-    this._popupForm.reset();
-  }
-//Меняем текст при загрузке 
-  loadingBtn(isLoading) {
-    if (isLoading) {
-      this._btnSubmit.textContent = "Сохранение...";
-    } else {
-      this._btnSubmit.textContent = "Сохранить";
-    }
-  }
+	_getInputValues(){
+		this._inputList = Array.from(
+			this._popupForm.querySelectorAll(".popup__edit-profile")
+			);
+		this._formValues = {}
+		this._inputList.forEach((input) => {
+			this._formValues[input.name] = input.value;
+		})
+		return this._formValues
+	}
 
+	setEventListeners(){
+		super.setEventListeners()
+		this._popupForm.addEventListener('submit', (evt) => {
+			evt.preventDefault();
+			this._handleFormsubmit(this._getInputValues());
+		})
+	}
+
+	close(){
+		super.close();
+		this._popupForm.reset();
+	}
 }

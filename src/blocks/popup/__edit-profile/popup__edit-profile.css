@@ -1,0 +1,25 @@
+.popup__edit-profile {
+  font-size: 14px;
+  line-height: 17px;
+  max-width: 358px;
+  width: 83.5%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, .2);
+  margin-left: 36px;
+  padding: 0;
+  padding-bottom: 13px;
+}
+
+  @media screen and (max-width: 600px) {
+    .popup__edit-profile {
+      width: 84.5%;
+      margin-left: 22px;
+    }
+
+    .popup__edit-profile:last-of-type {
+      margin-bottom: 45px;
+    }
+  }

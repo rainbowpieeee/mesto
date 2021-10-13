@@ -1,0 +1,7 @@
+.popup__item-container {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  max-width: 64%;
+  margin: auto;
+}
