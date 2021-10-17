@@ -1,15 +1,19 @@
-import { Popup } from "./Popup.js";
+// Попап просмотра картинок
+import Popup from './Popup.js';
+// создаем новый класс наследуя от клсса Попапа
+export default class PopupWithImage extends Popup {
+  constructor(popupSelector, popupImage, popupTitle) {
+    super(popupSelector);
+    this._popupImage = popupImage;
+    this._popupTitle = popupTitle;
+  }
+  // наследуем от радительского попапа открытие и изменяем 
+  openPopup({ linkElement, titleElement }) {
+    this._popupImage.src = linkElement;
+    this._popupImage.alt = titleElement;
+    this._popupTitle.textContent = titleElement;
 
-export class PopupWithImage extends Popup {
-	constructor(popup){
-		super(popup)
-		this._name = this._popup.querySelector('.popup__item-caption')
-		this._link = this._popup.querySelector('.popup__item-pic')
-	}
-	open(name, link){
-		super.open()
-		this._link.src = link
-		this._link.alt = name
-		this._name.textContent = name
-	}
+    super.openPopup();
+}
+
 }

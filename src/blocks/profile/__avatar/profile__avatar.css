@@ -1,11 +1,19 @@
 .profile__avatar {
-  border-radius: 50%;
   max-width: 120px;
-  max-height: 120px;
+  min-height: 120px;
+  border-radius: 50%;
+  margin-right: 30px;
 }
 
 .profile__avatar:hover {
-  color: black;
-  opacity: .2;
-  cursor: pointer;
+  cursor: url(../../../images/cursor.svg) 50 50, crosshair;
+  opacity: 0.6;
+  transition: opacity 200ms ease-in-out;
+}
+
+@media screen and (max-width: 690px) {
+  .profile__avatar  {
+    margin-right: 0;
+    margin-bottom: 26px;
+  }
 }

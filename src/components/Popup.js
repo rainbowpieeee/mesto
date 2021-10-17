@@ -1,34 +1,37 @@
-export class Popup{
-	constructor(popup){
-		this._popup = popup;
-		this._handleEscClose = this._handleEscClose.bind(this);
-	};
+// Класс попапа 
+export default class Popup {
+  constructor (popupSelector) {
+    this._popup = document.querySelector(popupSelector);
+    this._handleCloseEsc = this._handleCloseEsc.bind(this); 
+  };
+  // открытие попапа
+  openPopup() {
+    this._popup.classList.add('popup_opened');
+    document.addEventListener('keydown', this._handleCloseEsc);
+  }
 
-	_handleEscClose(evt){
-		if (evt.key === 'Escape'){
-			this.close();
-		}
-	};
+  // закрытие попапа
+  closePopup() {
+    this._popup.classList.remove('popup_opened');
+    document.removeEventListener('keydown', this._handleCloseEsc);
+  }
 
-	_handleOverlayClose(evt){
-		if (evt.target.classList.contains('popup_opened')){
-			this.close();
-		}
-	};
+  // закрытие попапа по кнопке ESC
+  _handleCloseEsc(event) {
+    if(event.key === 'Escape') {
+      this.closePopup();
+    }
+  }
 
-	open(){
-		this._popup.classList.add('popup_opened');
-		document.addEventListener('keydown', this._handleEscClose);
-	};
+  // добавляет слушатель клика по крестику закрытия
+  setEventListeners() {
+    this._popup.addEventListener('click', (evt) => {
+      if (evt.target.classList.contains('popup') || evt.target.classList.contains('popup__close-icon')
+  ) {
+    this.closePopup();
+  }
+    });
+  }
 
-	close(){
-		this._popup.classList.remove('popup_opened');
-		document.removeEventListener('keydown', this._handleEscClose);
-	};
 
-	setEventListeners(){
-		this._popup.querySelector('.popup__button-close')
-		.addEventListener('click', () => this.close());
-		this._popup.addEventListener('click', this._handleOverlayClose.bind(this));
-	};
-};
+}

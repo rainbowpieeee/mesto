@@ -1,100 +1,77 @@
-//  массив карточек, которые добавляются при загрузке страницы
+//импорт картинок для Webpack 
+import carachaevo from '../images/kirill-pershin-1088404.jpg';
+import elbrus from '../images/kirill-pershin-1404681-unsplash.png';
+import dombiy from '../images/kirill-pershin-1556355-unsplash.jpg';
+import bikal from '../images/photo-grid-baikal-2.jpg';
+import sochi from '../images/photo-grid-sochi.jpg';
+import karelia from '../images/place-karelia.jpg';
+
+// Массив с данными карточек
 const initialCards = [
   {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg',
-    alt: 'Архыз',
+    link: carachaevo,
+    name: 'Карачаево-Черкесия'
   },
   {
-    name: 'Гора Эльбрус',
-    link: 'https://images.unsplash.com/photo-1626518139514-65676cf25bac?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80',
-    alt: 'Гора Эльбрус',
+    link: elbrus,
+    name: 'Гора Эльбрус'
   },
   {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg',
-    alt: 'Иваново',
+    link: dombiy,
+    name: 'Домбай'
   },
   {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg',
-    alt: 'Камчатка',
+    link: bikal,
+    name: 'Байкал'
   },
   {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg',
-    alt: 'Холмогорский район',
+    link: sochi,
+    name: 'Сочи'
   },
   {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg',
-    alt: 'Байкал',
+    link: karelia,
+    name: 'Карелия'
   },
 ];
-//переменные
-const page = document.querySelector('.page');
-// Попапы
-const popupEditProfile = page.querySelector('#popupEditProfile');
-const popupAdditem = page.querySelector('#popupAdditem');
-const popupPicture = page.querySelector('#popupItem');
-const popupAvatar = page.querySelector('#popupAvatarChange');
-const popupDelete = page.querySelector('#popupDeleteElement');
-// инпуты
-const placeInput = popupAdditem.querySelector('#cardName-input');
-const pictureInput = popupAdditem.querySelector('#img-input');
-const nameInput = popupEditProfile.querySelector('#name-input');
-const jobInput = popupEditProfile.querySelector('#role-input');
-const avatarInput = popupAvatar.querySelector('#avatar-input');
-// Кнопки вызова попап
-const profileEditButton = page.querySelector('.profile__edit-button');
-const profileAddButton = page.querySelector('.profile__add-button');
-const ProfileAvatarButton = page.querySelector('.profile__avatar-container');
-const cardDeleteButton = page.querySelector('.element__remove');
-// Поля для вставки
-const profileName = page.querySelector('.profile__name');
-const profileRole = page.querySelector('.profile__role');
-const profileAvatar = page.querySelector('.profile__avatar');
-// Формы
-const editForm = popupEditProfile.querySelector('#popup__editForm');
-const addForm = popupAdditem.querySelector('#popup__addForm');
-const avatarForm = popupAvatar.querySelector('#popup__changeAvatar');
 
-const element = '.elements-list';
-const elements = page.querySelector('.elements');
 
-//валидация
-const object = ({
-  inputElement: '.popup__edit-profile',
-  submitButtons: '.popup__button',
-  submitButtonDisabled: 'popup__button_disabled',
-  inputErrors: 'popup__input_type_error',
-  spanErrorsActive: 'popup__input-error_active',
-  spanErrors: '.popup__input-error',
-});
+const profilePopupOpenButton = document.querySelector('.profile__edit-button');
+const profTitle = document.querySelector('.profile__title');
+const profSubtitle = document.querySelector('.profile__subtitle');
+const profilePopup = document.querySelector('.popup_profile_editing');
+const profileСlosePopup = document.querySelector('.popup__close-icon_profile_edit');
+const nameInput = document.querySelector('.form__field_item_name');
+const jobInput = document.querySelector('.form__field_item_job');
+const profileFormPopup = document.querySelector('.form_profile_edit');
+const avatarForm = document.querySelector('.popup__form_avatar');
+// переменные для попапа добавление карточек
+const popupAddCards = document.querySelector('.popup_container_cards');
+const buttonAddCards = document.querySelector('.profile__add-button');
+const cardsClosePopup = document.querySelector('.popup__close-icon_close_cards');
+const formCardsPopup = document.querySelector('.popup__form_add_cards');
+const imputTitleCards = document.querySelector('.form__field_item_title');
+const inputLinkCards = document.querySelector('.form__field_item_link');
+const usersOnline = document.querySelector('.template-container');
+const popupClosCards = document.querySelector('.popup_content_image');
+const imageCardsmage = document.querySelector('.popup__image');
+const imagePopup = document.querySelector('.template-container');
+const buttnClosePopupCards = document.querySelector('.popup__close-icon_close_image');
+const figcaption = document.querySelector('.popup__image-caption');
+const avatarAdd = document.querySelector('.profile__avatar');
+const inputLinkAvatar = document.querySelector('.form__field_avatar');
 
-export{
-	initialCards,
-	popupEditProfile,
-	popupAdditem,
-  popupAvatar,
-  popupDelete,
-  popupPicture,
-	placeInput,
-	pictureInput,
-	nameInput,
-	jobInput,
-  avatarInput,
-	profileEditButton,
-	profileAddButton,
-  ProfileAvatarButton,
-  cardDeleteButton,
-	profileName,
-	profileRole,
-  profileAvatar,
-  editForm,
-  addForm,
-  avatarForm,
-  element,
-  elements,
-	object,
-}
+// обект валидации
+const config = {
+  formSelector: '.popup__form',
+  inputSelector: '.form__field',
+  submitButtonSelector: '.form__button',
+  inactiveButtonClass: 'form__button_btn_notactive',
+  inputErrorClass: 'form__field_error_active',
+  errorClass: 'form__field-error_status_error'
+};
+
+
+
+export { profilePopupOpenButton, profTitle, avatarForm, profSubtitle, profilePopup, profileСlosePopup, nameInput, jobInput, 
+  profileFormPopup, popupAddCards, buttonAddCards, cardsClosePopup, formCardsPopup, imputTitleCards, inputLinkCards, 
+  usersOnline, popupClosCards, imageCardsmage, imagePopup, inputLinkAvatar, buttnClosePopupCards, figcaption, config, initialCards, avatarAdd }
